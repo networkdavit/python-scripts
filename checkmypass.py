@@ -23,7 +23,6 @@ def pwned_api_check(password):
 	response = request_api_data(first5_char)
 	return get_password_leaks_count(response, tail)
 
-pwned_api_check("123")
 
 def main(args):
 	for password in args:
