@@ -24,6 +24,7 @@ def generate_password(chars):
 			password += random_char
 		print(colored(password, "green"))
 		print("-" * len(password))
+	print(colored("Thank you for using the program!", "green"))
 
 def main():
 	while True:
