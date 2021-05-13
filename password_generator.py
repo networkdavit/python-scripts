@@ -5,6 +5,7 @@ print(colored("Welcome to the Password Generator", "green"))
 
 all_chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
 
+
 def generate_password(chars):
 	while True:
 		try:
@@ -26,6 +27,7 @@ def generate_password(chars):
 		print("-" * len(password))
 	print(colored("Thank you for using the program!", "green"))
 
+
 def main():
 	while True:
 		try:
@@ -46,6 +48,7 @@ def main():
 				print(colored("Not a valid mode", "red"))
 		except ValueError:
 			print(colored("Not a valid mode", "red"))
+
 
 if __name__ == "__main__":
 	main()
