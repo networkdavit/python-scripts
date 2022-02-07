@@ -1,5 +1,4 @@
 import requests 
-import getopt
 import sys
 
 if sys.argv[1] == "-h" or sys.argv[1] == "--help":
