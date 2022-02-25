@@ -12,7 +12,7 @@ if sys.argv[1] == "-h" or sys.argv[1] == "--help":
 
 
 hash_type = sys.argv[1]
-hashed_string = sys.argv[2]
+hashed_word = sys.argv[2]
 wordlist = sys.argv[3]
 
 
@@ -20,28 +20,28 @@ def hash_md5(word):
 	hash_object = hashlib.md5(f"{word}".encode('utf-8'))
 	hashed = hash_object.hexdigest()
 	# print(f"md5: {hashed}")
-	if hashed_string == hashed:
+	if hashed_word == hashed:
 		print(f"FOUND HASH: {word}")
 
 def hash_sha1(word):
 	hash_object = hashlib.sha1(f"{word}".encode('utf-8'))
 	hashed = hash_object.hexdigest()
 	# print(f"sha256: {hashed}")
-	if hashed_string == hashed:
+	if hashed_word == hashed:
 		print(f"FOUND HASH: {word}")
 
 def hash_sha224(word):
 	hash_object = hashlib.sha224(f"{word}".encode('utf-8'))
 	hashed = hash_object.hexdigest()
 	# print(f"sha256: {hashed}")
-	if hashed_string == hashed:
+	if hashed_word == hashed:
 		print(f"FOUND HASH: {word}")
 
 def hash_sha256(word):
 	hash_object = hashlib.sha256(f"{word}".encode('utf-8'))
 	hashed = hash_object.hexdigest()
 	# print(f"sha256: {hashed}")
-	if hashed_string == hashed:
+	if hashed_word == hashed:
 		print(f"FOUND HASH: {word}")
 
 
