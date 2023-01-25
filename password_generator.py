@@ -1,7 +1,6 @@
 import random
-from termcolor import colored
 
-print(colored("Welcome to the Password Generator", "green"))
+print("Welcome to the Password Generator")
 
 all_chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
 
@@ -12,26 +11,26 @@ def generate_password(chars):
 			password_length = int(input("How long should the password be?: "))
 			password_count = int(input("How many passwords should be generated?: "))
 			if password_length < 6 or password_length > 35:
-				print(colored("The length should be between 6 and 35", "red"))
+				print("The length should be between 6 and 35")
 			elif password_length >= 6 or password_length <= 35:
 				break
 		except ValueError:
-			print(colored("Not a valid number", "red"))
+			print("Not a valid number")
 
 	for i in range(password_count):
 		password = ""
 		for z in range(password_length):
 			random_char = random.choice(chars)
 			password += random_char
-		print(colored(password, "green"))
+		print(password)
 		print("-" * len(password))
-	print(colored("Thank you for using the program!", "green"))
+	print("Thank you for using the program!")
 
 
 def main():
 	while True:
 		try:
-			mode = int(input(colored("For default character list, please enter 1 \nFor custom character list, please enter 2\nmode: ", "green")))
+			mode = int(input("For default character list, please enter 1 \nFor custom character list, please enter 2\nmode: "))
 			if mode == 1:
 				generate_password(all_chars)
 				break
@@ -39,15 +38,15 @@ def main():
 				while True:
 					custom_character_list = input("Please enter your custom charcaters: ")
 					if " " in custom_character_list:
-						print(colored("Can't use spaces in character list", "red"))
+						print(("Can't use spaces in character list", "red"))
 					else:
 						break
 				generate_password(custom_character_list)
 				break
 			else:
-				print(colored("Not a valid mode", "red"))
+				print("Not a valid mode")
 		except ValueError:
-			print(colored("Not a valid mode", "red"))
+			print("Not a valid mode")
 
 
 if __name__ == "__main__":
