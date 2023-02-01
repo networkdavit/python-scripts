@@ -44,19 +44,18 @@ def translator(input, output, dest_lang):
     with open(output, "w",  encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
 
-input_file1 = sys.argv[1]
-input_file2 = sys.argv[2]
-input_file3 = sys.argv[3]
-input_file4 = sys.argv[4]
-input_files = [input_file1, input_file2, input_file3, input_file4]
+input_file = sys.argv[1]
+input_files = []
 
-output_file1 = sys.argv[5]
-output_file2 = sys.argv[6]
-output_file3 = sys.argv[7]
-output_file4 = sys.argv[8]
-output_files = [output_file1, output_file2, output_file3, output_file4]
+output_file = sys.argv[2]
+output_files = []
 
+lang = sys.argv[3]
 
-lang = sys.argv[9]
-for i in range(4):
+for i in range(5):
+    
+    input_files.append(f"{input_file}{i+1}.json")
+    output_files.append(f"{output_file}{i+1}.json")
+
+for i in range(5):
     translator(input_files[i], output_files[i], lang)
