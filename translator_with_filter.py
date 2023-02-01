@@ -38,8 +38,10 @@ def translator(input, output, dest_lang):
         j += 1
 
     # Write the translated data to the output JSON file
-    with open(output, "w",  encoding='utf-8') as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
+    with open(output, "a",  encoding='utf-8') as f:
+        for item in data:
+            f.write(json.dumps(item, indent=2, ensure_ascii=False) + "," + '\n')
+
 
 input_file = sys.argv[1]
 input_files = []
@@ -49,7 +51,14 @@ output_files = []
 
 lang = sys.argv[3]
 
-for i in range(5):
-    input_files.append(f"{input_file}{i+1}.json")
-    output_files.append(f"{output_file}{i+1}.json")
-    translator(input_files[i], output_files[i], lang)
+with open(f"{output_file}.json", "w+",  encoding='utf-8') as f:
+    f.write("[" + "\n"  + "{")
+    for i in range(5):
+        input_files.append(f"{input_file}{i+1}.json")
+        output_files.append(f"{output_file}{i+1}.json")
+        translator(input_files[i], f"{output_file}.json", lang)
+    f.seek(0, 0)
+    data = f.read()
+    data = data.rstrip(',\n') + '\n]'
+    f.seek(0, 0)
+    f.write(data)
