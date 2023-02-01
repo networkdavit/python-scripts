@@ -32,7 +32,7 @@ def translator(input, output, dest_lang):
     # Split the translated string back into individual strings
     j = 0
     for i, item in enumerate(data):
-        if "_" in item["string"] or ":" in item["string"]:
+        if "_" in item["string"] or ":" in item["string"] or "DB" in item["string"]:
             continue
         item["string"] = translated_strings[j]
         j += 1
