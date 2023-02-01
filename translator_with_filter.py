@@ -4,9 +4,6 @@ import sys
 
 
 def translator(input, output, dest_lang):
-# The language to translate the input JSON to
-
-
     # Read the input JSON file
     with open(input, "r") as f:
         data = json.load(f)
@@ -53,9 +50,6 @@ output_files = []
 lang = sys.argv[3]
 
 for i in range(5):
-    
     input_files.append(f"{input_file}{i+1}.json")
     output_files.append(f"{output_file}{i+1}.json")
-
-for i in range(5):
     translator(input_files[i], output_files[i], lang)
