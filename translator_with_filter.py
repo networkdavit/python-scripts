@@ -1,28 +1,16 @@
 import json
 from googletrans import Translator
 import sys
+import time
 
 
+#part 1
 def translator(input, output, dest_lang):
     # Read the input JSON file
     with open(input, "r") as f:
         data = json.load(f)
 
-    # Concatenate all the "locale" values into a single string
-    locales_to_translate = [item["locale"] for item in data]
-    locales_to_translate = "\n".join(locales_to_translate)
-
-    # Translate the concatenated "locale" values
     translator = Translator()
-    translated_locales = translator.translate(text=locales_to_translate, dest=dest_lang).text
-    translated_locales = translated_locales.split("\n")
-
-    # Split the translated string back into individual strings
-    j = 0
-    for i, item in enumerate(data):
-        item["locale"] = translated_locales[j]
-        j += 1
-
     # Translate the "string" values that do not contain "_" or ":"
     strings_to_translate = [item["string"] for item in data if "_" not in item["string"] and ":" not in item["string"] and "DB" not in item["string"]]
     strings_to_translate = "\n".join(strings_to_translate)
@@ -62,3 +50,28 @@ with open(f"{output_file}.json", "w+",  encoding='utf-8') as f:
     data = data.rstrip(',\n') + '\n]'
     f.seek(0, 0)
     f.write(data)
+
+
+
+#part 2
+time.sleep(1)
+def translate_key_values():
+    translator = Translator()
+    with open('output.json', 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    # Translate the strings that have :num
+    for item in data:
+        if ':num' in item['string']:
+            words = item['string'].split()
+            for i, word in enumerate(words):
+                if word == ':num':
+                    translated_word = translator.translate(words[i + 1], dest=lang).text
+                    item['string'] = item['string'].replace(words[i + 1], translated_word)
+
+    # Write the translated data to a new JSON file
+    with open(f'output_final_{lang}.json', 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+        
+
+translate_key_values()
