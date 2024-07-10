@@ -1,3 +1,4 @@
+#first of all do 'pip install requests', or 'pip3 install requests'
 import requests
 import sys 
 
