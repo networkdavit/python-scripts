@@ -1,3 +1,7 @@
+#sudo apt install python3-nmap python3-matplotlib
+#pip3 install python-nmap matplotlib
+
+
 import nmap
 import matplotlib.pyplot as plt
 import sys
